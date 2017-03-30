@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome Home</title>
+
+<!--Link Bootstrap's JavaScript to jQuery-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://use.fontawesome.com/c606ab7025.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+
+<link href="https://fonts.googleapis.com/css?family=Cherry+Cream+Soda|Delius+Unicase|Luckiest+Guy|Neucha" rel="stylesheet">
+</head>
+
+<!--Main Page-->	
+<body>
+
+	<div class="container modifiedContainer school-section">	
+
+		<!--Title-->
+		
+		<div class="jumbotron" id = "title">
+		  <div class=".container">
+			  <h1>Welcome Home</h1>
+			  	<p id="subtitle" align="center">Moving somewhere new can be stressful. We are help to help! We are a one stop site to locate all local businesses, sites and events. In addition, you can connect with others in your neighborhood. You will feel at home in no time!</p>
+		  </div>
+		</div>
+	
+		<!--Main-->		
+		<div class="main-section panel school-panel">
+		<!-- <div id = "input-form"> -->
+			<h3 id="resultsTable" align="center">You are one step closer to feeling at home...</h3>
+
+			<div id = "schoolPics">
+			<img src="https://static1.squarespace.com/static/54caa3dce4b0b2da2a4233fa/t/56cdbc2840261d9c2e3b7d9d/1456324503426/Broughton+High+School" alt="Mountain View" style="width:295px;height:228px;">
+			<img src="http://www.ncat.edu/125/img/Gallery/WileyElementarySchool/Gallery-swesyac1.jpg" style="width:295px;height:228px;">
+			<img src="http://www.coedu.usf.edu/main/departments/ce/elementary_education/bailey.jpg" alt="Mountain View" style="width:295px;height:228px;">
+			<br>
+			<br>
+			</div>
+
+			<div id = "schoolResults">
+				
+				
+			</div>
+
+			<div align = "center">
+
+				<button id= "searchReturn" type="submit" class="btn btn-success submit"  onclick="location.href='/searchPage';">Back to Search Page</button>		
+			</div>			
+				<!-- <form> -->
+				
+		</div>
+		</div>
+	</div>	
+		<!--Footer-->
+		<div id = 'footer'>
+			<nav class="navbar navbar-default navbar-fixed-bottom">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li class="active"><a href="mainPage"><span class="sr-only"></span><span class="glyphicon glyphicon-home"></span></a></li>
+			        <li class="test"><a href="/teamPage">Team Page</a></li>
+			        <li><a href="/neighborhoodPage">Neighborhood Page</a></li>
+			      </ul>
+			      <form class="navbar-form navbar-left">
+			      </form>
+			      <ul class="nav navbar-nav navbar-right">
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+
+		</div>
+		<!--Modal-->
+
+<!-- Custom Script -->
+	<script src="js/mainPage.js" type="text/javascript"></script>
+
+	<script>
+//////////////////////////////////////////////////////////////////
+//   Block comment for Document ready function                  //
+//   1. Retrieve user's location from storage                   //
+//   2. Update query string with user's loc                     //
+//   3. Make ajax call with updated query string                //
+//   4. Retrieve school information                             //
+//   5. Modify resultsTable Div with school information         //
+//////////////////////////////////////////////////////////////////
+// Start the script when the document loads
+	$( document ).ready(function() {
+	    console.log( "ready!" );
+	// Initialize zip code variable for query string
+
+
+	var schoolLocForQuery="";
+	schoolLocForQuery=localStorage.getItem("locationPass");
+	console.log("schoolLocForQuery  :" + schoolLocForQuery);
+	var q1=schoolLocForQuery
+	var q2="https://utcors1.herokuapp.com/http://api.greatschools.org/search/schools?key=v8tlllkxapvtodjexkssagxx&state=nc&q=" + q1;
+	console.log("q2 :" + q2);
+
+	var schoolsQueryURL=q2;
+
+	//var schoolsQueryURL="https://utcors1.herokuapp.com/http://api.greatschools.org/search/schools?key=v8tlllkxapvtodjexkssagxx&state=NC&q=raleigh";
+
+	    $.ajax({
+	      url: schoolsQueryURL,
+	      method: "GET",
+	      //dataType : "jsonp",
+	      headers: {
+	             "x-requested-with":" "
+	     }
+	      
+	    }).done(function(response, err) {
+
+
+	      if (err !="success"){
+	         	console.log("error");
+	        	console.log(err);
+	       }
+	      console.log(response.data);
+
+	      console.log("Positive response :" + err);
+	      console.log("this is response" + response);
+
+	      $(response).find("school").each(function(i,school){
+	  			var thisSchool = $("<ul>");
+	  			//console.log("step 100");
+	  			console.log(thisSchool);
+	  			//console.log("step 101");
+
+
+	  			$("> *",school).each(function(n,property){
+	    			var thisProperty = $("<li>").appendTo(thisSchool);
+	    			$(thisProperty).append("<b>" + property.tagName + ":</b> "); // property name
+	    			$(thisProperty).append($(property).text()); // property text
+
+	  			})
+
+
+	  			$("#schoolResults").append(thisSchool);
+	  			$("#schoolResults").append("<hr><h3>-----------------------------------------</h3>")        
+			})
+	      //$("#resultsTable").append("<h1>"+ response + "</h1>");
+	    });  // end of .DONE function
+
+	 });
+	    </script>
+
+
+
+</body>
+</html>

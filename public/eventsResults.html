@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome Home</title>
+
+<!--Link Bootstrap's JavaScript to jQuery-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://use.fontawesome.com/c606ab7025.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+
+<link href="https://fonts.googleapis.com/css?family=Cherry+Cream+Soda|Delius+Unicase|Luckiest+Guy|Neucha" rel="stylesheet">
+</head>
+
+<!--Main Page-->	
+<body>
+
+	<div class="container modifiedContainer">	
+
+		<!--Title-->
+		
+		<div class="jumbotron" id = "title">
+		  <div class=".container">
+			  <h1>Welcome Home</h1>
+			  	<p id="subtitle" align="center">Moving somewhere new can be stressful. We are help to help! We are a one stop site to locate all local businesses, sites and events.  You will feel at home in no time!</p>
+		  </div>
+		</div>
+	
+		<!--Main-->		
+		<div class="main-section panel">
+		<div>
+			<h3 id="resultsTable" align="center">You are one step closer to feeling at home...</h3>
+			<!--// MAL added id eventResults 03-26-17-->
+
+			<div id = "eventPics">
+			<img src="http://visitraleigh.files.wordpress.com/2014/05/jc-raulston-arboretum3.jpg" alt="Mountain View" style="width:295px;height:228px;">
+			<img src="https://media.timeout.com/images/102826146/image.jpg" style="width:295px;height:228px;">
+			<img src="https://getoffline.s3.amazonaws.com/uploads/image/picture/8228/large_10919387_740158699396250_522795793_n.jpg" alt="Mountain View" style="width:295px;height:228px;">
+			</div>
+
+			<div id = "eventResults">
+				
+				
+			</div>			
+
+			<div align = "center">
+				<button id= "searchReturn" type="submit" class="btn btn-success submit" onclick="location.href='/searchPage';">Back to Search Page</button>	
+			</div>
+				<!-- <form> -->
+				
+		</div>
+		</div>
+	</div>	
+		<!--Footer-->
+		<div id = 'footer'>
+			<nav class="navbar navbar-default navbar-fixed-bottom">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li class="active"><a href="mainPage"><span class="sr-only"></span><span class="glyphicon glyphicon-home"></span></a></li>
+			        <li class="test"><a href="/teamPage">Team Page</a></li>
+			        <li><a href="/neighborhoodPage">Neighborhood Page</a></li>
+			      </ul>
+			      <form class="navbar-form navbar-left">
+			      </form>
+			      <ul class="nav navbar-nav navbar-right">
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+
+		</div>
+		<!--Modal-->
+
+<!-- Custom Script -->
+<!--	<script src="js/mainPage.js" type="text/javascript"></script>
+	<script src="js/eventHandler.js" type="text/javascript"></script>
+-->
+<script>
+
+//////////////////////////////////////////////////////////////////
+//   Block comment for Document ready function                  //
+//   1. Retrieve user's zip from storage                        //
+//   2. Update query string with user's zip                     //
+//   3. Make ajax call with updated query string                //
+//   4. Retrieve City, Event Name, Start Time and Address       //
+//   5. Modify eventResults Div with event information          //
+//////////////////////////////////////////////////////////////////
+
+// ML made modifications for location on 03-30-17
+// Start the script when the document loads
+$( document ).ready(function() {
+    console.log( "ready!" );
+// Initialize loc code variable for query string
+    var locForQuery="";  
+
+// Retrieve saved loc code from local storage      
+    locForQuery=localStorage.getItem("locationPass");
+
+
+
+
+ 
+// Query string for API call 
+ 	queryURL1 = "http://api.eventful.com/json/events/search?app_key=C4twR9SMnMSRvt9T&location="+ locForQuery + "&country_name=united+states&within=5&date=Next+week";
+ 
+// Make AJAX call 
+
+ 	$.ajax({
+	      url: queryURL1,
+	      method: 'GET',
+	      dataType: 'jsonp'
+
+	      }).done(function(response, err) {
+	      	// if (err){
+	      	// 	console.log(err);
+	      	// 	throw err;
+
+	      	// }
+
+	      		// This for loop will proccess at max 10 event results from the query
+		        for (i=0; i<10; i++){
+
+		            var cityName= response.events.event[i].city_name;
+		              		             
+		            var eventName= response.events.event[i].title;
+		            		              
+		            var d=response.events.event[i].start_time;
+		              
+		            var address=response.events.event[i].venue_address;
+
+		            	              //formatting date to strip off extra GMT time
+				  var myDate = new Date(d);
+				  var date = new Date(myDate);
+				  myDate = new Date(myDate).toUTCString();
+				  myDate = myDate.split(' ').slice(0,4).join(' ');
+
+				  //added time to new field
+				  var time = d;
+				  time = d.split(' ').slice(1,2).join(' ');
+
+
+		             		              
+		            //  Debug statement - console.log(cityName);
+	$('#eventResults').append("<br><br><b>Event:</b> " + eventName + " - will be in <b>" + cityName + "</b><br> <b>Date: </b>" + myDate + "&nbsp&nbsp&nbsp&nbsp <b>Time: </b>" + time + "<br> <b>Location: </b>" + address);
+		              
+		          }  // end of for LOOP
+		          
+
+	}); // end of .done
+
+}); // end of document ready
+
+
+</script>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

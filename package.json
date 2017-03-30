@@ -1,0 +1,35 @@
+{
+  "name": "welc-heroku",
+  "version": "1.0.0",
+  "description": "The site for users to find local resources and other newcomers in one place!",
+  "main": "server.js",
+  "dependencies": {
+    "ajax-request": "^1.2.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "method-override": "^2.3.8",
+    "mysql": "^2.13.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "sequelize": "^3.30.4",
+    "yelp-api-v3": "^1.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pmazzoli17/welc-heroku.git"
+  },
+  "author": "peter_mazzoli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pmazzoli17/welc-heroku/issues"
+  },
+  "homepage": "https://github.com/Pmazzoli17/welc-heroku#readme"
+}

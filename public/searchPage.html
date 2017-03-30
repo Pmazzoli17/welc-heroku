@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome Home - Search</title>
+
+<!--Link Bootstrap's JavaScript to jQuery-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://use.fontawesome.com/c606ab7025.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+
+<link href="https://fonts.googleapis.com/css?family=Cherry+Cream+Soda|Delius+Unicase|Luckiest+Guy|Neucha" rel="stylesheet">
+
+</head>
+
+<!--Search Page-->	
+<body>
+
+	<div class="container" id = "searchContainer">	
+
+		<!--Title-->
+		
+		<div class="jumbotron" id = "title">
+		  <div class=".container">
+			  <h1>Welcome Home</h1>
+			  	<p id="subtitle" align="center">Moving somewhere new can be stressful. We are help to help! We are a one stop site to locate all local businesses, sites and events. In addition, you can connect with others in your neighborhood. You will feel at home in no time!</p>
+		  </div>
+		</div>
+		<div id="zip">
+
+			<div class="form-group" align="center">
+					<!-- ML 03-30-17 Changed wording on text message to reflect CITY instead of zip Code-->
+				    <label for="InputZip" id = "zipText">Please enter the zip code for which you would like to search</label>
+				    <input type="text" class="form-control entry-box" id="loc-code" placeholder="12345" align="center">
+			</div>
+			
+
+		</div>
+	
+		<!--Main-->		
+			<div id = 'search-section'>
+
+
+				<div class = "search-icon" id="school">
+				    <a href="/schools">
+	  					<div class="nav"><i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
+	   					Schools
+	   					</div>
+					</a>
+				</div>	
+
+				<div class = "search-icon" id="shopping">
+				    <a href="/shopping">
+	  					<div class="nav"><i class="fa fa-shopping-bag fa-5x" aria-hidden="true"></i>
+	   					Shopping
+	   					</div>
+					</a>
+				</div>	
+
+				<div class = "search-icon" id="grocery">
+				    <a href="/grocery">
+	  					<div class="nav"><i class="fa fa-shopping-cart fa-5x" aria-hidden="true"></i>
+	   					Grocery
+	   					</div>
+					</a>
+				</div>
+
+				<div class = "search-icon" id="healthclub">
+				    <a href="/gyms">
+	  					<div class="nav"><i class="fa fa-heartbeat fa-5x" aria-hidden="true"></i>
+	   					Healthclubs
+	   					</div>
+					</a>
+				</div>				
+
+				<div class = "search-icon" id="brewery">
+				    <a href="/breweries">
+	  					<div class="nav"><i class="fa fa-beer fa-5x" aria-hidden="true"></i>
+	   					Breweries
+	   					</div>
+					</a>
+				</div>
+
+				<div class = "search-icon" id="restaurant">
+				    <a href="/restaurants">
+	  					<div class="nav"><i class="fa fa-cutlery fa-5x" aria-hidden="true"></i>
+	   					Restaurants
+	   					</div>
+					</a>
+				</div>					
+
+				<div class = "search-icon" id="park">
+				    <a href="/parks">
+	  					<div class="nav"><i class="fa fa-tree fa-5x" aria-hidden="true"></i>
+	   					Parks
+	   					</div>
+					</a>
+				</div>	
+
+				<div class = "search-icon" id="events">
+				    <a href="/events">
+	  					<div class="nav"><i class="fa fa-music fa-5x" aria-hidden="true"></i>
+	   					Events
+	   					</div>
+					</a>
+				</div>		
+															
+	</div>
+
+
+		<!--Footer-->
+		<div id = 'footer'>footer
+			<nav class="navbar navbar-default navbar-fixed-bottom">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li class="active"><a href="mainPage"><span class="sr-only"></span><span class="glyphicon glyphicon-home"></span></a></li>
+			        <li class="test"><a href="/teamPage">Team Page</a></li>
+			        <li><a href="/neighborhoodPage">Neighborhood Page</a></li>
+			      </ul>
+			      <form class="navbar-form navbar-left">
+			      </form>
+			      <ul class="nav navbar-nav navbar-right">
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+
+		</div>
+
+		<!--javascript-->
+<!-- I added this line to inlcude event handler - ML 03-26-17-->	
+
+<!--	
+<script src="js/eventHandler.js" type="text/javascript"></script>
+-->	
+<script>
+var lastname = "";
+/////////////////////////////////////////////////////////////////////
+//          Event handler for events button                        //
+//          1. Saves zip entered by user into zip variable         //
+//          2. Stores zip into local storage variable zipCodePass  //
+/////////////////////////////////////////////////////////////////////
+$("#events").click(function(){
+ 
+ // obtain the value of location and store in loc   
+  loc = document.getElementById('loc-code').value;
+ // log the value retrieved from loc-code
+  console.log("retrieved loc as :" + loc);
+ // store the contents of the zip variable to local storage "locationPass"
+  localStorage.setItem("locationPass", loc);
+})
+// ML added event for #school on 3-30-17
+$("#school").click(function(){
+ 
+ // obtain the value of zip-code and store in loc   
+  loc = document.getElementById('loc-code').value;
+ // log the value retrieved from loc-code
+  console.log("retrieved loc as :" + loc);
+ // store the contents of the loc variable to local storage "locationPass"
+  localStorage.setItem("locationPass", loc);
+})
+
+
+</script>	
+
+
+</body>
+</html>
